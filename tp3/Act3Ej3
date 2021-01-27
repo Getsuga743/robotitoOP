@@ -1,0 +1,36 @@
+programa Ej3
+procesos
+  proceso RecorrerAv(ES pasosTot:numero)
+  variables
+    pasosAv:numero
+  comenzar
+    pasosAv:=0
+    mientras(~(HayFlorEnLaEsquina))
+      pasosAv:= pasosAv+1
+      mover
+    pasosTot:=pasosTot+pasosAv
+    Informar(pasosAv)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    pasosTot,pasosAv:numero
+  comenzar
+    pasosTot:=0
+    Pos(2,1)
+    mientras (PosAv<100)
+      RecorrerAv(pasosTot)
+      Pos(PosAv+2,1)
+    RecorrerAv(pasosTot)  
+    Informar(pasosTot)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+

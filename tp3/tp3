@@ -1,0 +1,324 @@
+ 
+
+programa ej1A
+procesos
+  proceso Rect (E base:numero; E altura:numero)
+  comenzar
+    repetir 2
+      repetir altura
+        mover
+      derecha
+      repetir base
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    bas:numero
+  comenzar  
+    bas:=5
+    repetir 2
+      Rect (bas,1)      
+      Pos(PosAv+1,PosCa+2)
+      bas:= bas - 2
+    Rect (bas,1)       
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+===========================================
+
+programa Ej1B
+procesos
+  proceso Rect (E base:numero; E altura:numero)
+  comenzar
+    repetir 2
+      repetir altura
+        mover
+      derecha
+      repetir base
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    alt:numero
+  comenzar  
+    alt:=15
+    repetir 4
+      Rect (1,alt)      
+      Pos(PosAv+1,PosCa+2)
+      alt:= alt - 4 
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+ 
+ 
+ ===========================
+ 
+ 
+programa Ej2
+procesos
+  proceso ContarPapeles (ES papeles:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso ContarFlores (ES flores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+  fin
+  proceso ContarFloresYPapeles (ES flores:numero;ES papeles:numero)
+  comenzar
+    ContarPapeles(papeles)
+    ContarFlores(flores)
+  fin
+  proceso Cuadrado (E lado:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    repetir 4
+      repetir lado
+        ContarFloresYPapeles(flores,papeles)
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores,papeles,lado:numero
+    condicion:boolean
+  comenzar
+    lado:=99
+    condicion:=F
+    mientras(condicion=F)
+      flores:=0
+      papeles:=0
+      Cuadrado(lado,flores,papeles)
+      lado:= lado - 2
+      si((flores=3)&(papeles=2))
+        condicion:=V
+      sino
+        Pos(PosAv + 1,PosCa + 1)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+==========================================================================
+
+
+programa Ej2
+procesos
+  proceso ContarPapeles (ES papelesCua:numero)
+  variables
+    papeles:numero
+  comenzar
+    papeles:=0
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles + 1
+    repetir papeles
+      depositarPapel
+    papelesCua:=papelesCua+papeles
+  fin
+  proceso ContarFlores (ES floresCua:numero)
+  variables
+    flores:numero
+  comenzar
+    flores:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    repetir flores
+      depositarFlor
+    floresCua:=floresCua+flores
+  fin
+  proceso ContarFloresYPapeles (ES flores:numero;ES papeles:numero)
+  comenzar
+    ContarPapeles(papeles)
+    ContarFlores(flores)
+  fin
+  proceso Cuadrado (E lado:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    repetir 4
+      repetir lado
+        ContarFloresYPapeles(flores,papeles)
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    floresCua,papelesCua,lado:numero
+    condicion:boolean
+  comenzar
+    lado:=99
+    floresCua:=0
+    papelesCua:=0
+    mientras ~((floresCua=3)&(papelesCua=2))
+      floresCua:=0
+      papelesCua:=0
+      Cuadrado(lado,floresCua,papelesCua)
+      lado:= lado - 1
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+========================================================================
+programa ej3
+procesos
+  proceso RecorrerCa(ES pasosAcc:numero)
+  variables
+    pasosCa:numero
+  comenzar
+    pasosCa:=0 
+    mientras(~(HayFlorEnLaEsquina))
+      mover
+      pasosCa:=pasosCa+1
+    Informar(pasosCa)
+    pasosAcc:=pasosAcc+pasosCa
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    pasosTot:numero
+  comenzar
+    pasosTot:=0
+    Pos(1,2)
+    derecha
+    mientras(PosCa<100)
+      RecorrerCa(pasosTot)
+      Pos(1,PosCa+2)
+    RecorrerCa(pasosTot)  
+    Informar(pasosTot)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+  =======================================}
+  
+programa zarasa3
+procesos
+  proceso RecorrerAv(ES pasosTot:numero)
+  variables
+    pasosAv:numero
+  comenzar
+    pasosAv:=0
+    mientras(~(HayFlorEnLaEsquina))
+      pasosAv:= pasosAv+1
+      mover
+    pasosTot:=pasosTot+pasosAv
+    Informar(pasosAv)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    pasosTot,pasosAv:numero
+  comenzar
+    pasosTot:=0
+    Pos(2,1)
+    mientras (PosAv<100)
+      RecorrerAv(pasosTot)
+      Pos(PosAv+2,1)
+    RecorrerAv(pasosTot)  
+    Informar(pasosTot)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+      
+=========================================
+
+
+
+programa Ej2
+procesos
+  proceso ContarPapeles (ES papeles:numero)
+  comenzar
+    papeles:=0
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:= papeles + 1
+    repetir papeles
+      depositarPapel
+  fin
+  proceso ContarFlores (ES flores:numero)
+  comenzar
+    flores:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    repetir flores
+      depositarFlor
+  fin
+  proceso Cuadrado (E lado:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    papeles:=0
+    flores:=0
+    repetir 4
+      repetir lado
+        ContarFlores(flores)
+        ContarPapeles(papeles)
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    floresCua,papelesCua,lado:numero
+    condicion:boolean
+  comenzar
+    lado:=99
+    floresCua:=0
+    papelesCua:=0
+    mientras ~((floresCua=3)&(papelesCua=2))
+      Cuadrado(lado,floresCua,papelesCua)
+      lado:= lado - 1
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+      
+      
+      

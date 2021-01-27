@@ -1,0 +1,260 @@
+programa cap7ej1
+procesos
+  proceso TomarFloresYPapeles(ES flores:numero;ES papeles:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1   
+  fin
+  proceso RecorrerCalle(E nrocalle:numero;ES floresCa:numero;ES papelesCa:numero)
+  comenzar
+    Pos(1,nrocalle)
+    repetir 99
+      TomarFloresYPapeles(floresCa,papelesCa)
+      mover 
+    TomarFloresYPapeles(floresCa,papelesCa)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores:numero
+    papeles:numero
+    calle:numero
+  comenzar
+    derecha
+    flores:=0
+    papeles:=0
+    calle:=1
+    repetir 1
+      RecorrerCalle(calle,flores,papeles)
+      calle:=calle+1
+    Informar(flores,papeles)
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa cap7ej2
+procesos
+  proceso RecogerFlores(ES flores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+  fin
+  proceso MoverFlores(ES flores:numero)
+  variables
+    posca:numero
+  comenzar 
+    posca:=PosCa
+    Pos(PosAv,PosCa+1)
+    repetir flores
+      depositarFlor
+    Pos(PosAv,posca)
+  fin
+  proceso RecorrerCall(ES florCa:numero)
+  variables
+    florEsq:numero
+  comenzar
+    repetir 99
+      si(HayFlorEnLaEsquina)
+        florEsq:=0
+        RecogerFlores(florEsq)
+        MoverFlores(florEsq)
+        florCa:=florCa+florEsq
+      mover  
+    florEsq:=0
+    RecogerFlores(florEsq)
+    MoverFlores(florEsq)
+    florCa:=florCa+florEsq
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    floresTot:numero
+  comenzar 
+    floresTot:=0
+    derecha
+    repetir 2
+      RecorrerCall(floresTot)
+      Pos(1,PosCa+2)
+    Informar(floresTot)    
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa cap7Ej3
+procesos 
+  proceso contarFlorEsq(ES florEsq:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      florEsq:=floresEsq+1
+    repetir florEsq
+      depositarFlor
+  fin
+  proceso contarPapelEsq(ES papelEsq:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      papelEsq:=papelEsq+1
+    repetir papelEsq
+      depositarPapel
+  fin
+  proceso compararFyPEsq(E papelEsq:numero;ES esquinaCumple:numero;E florEsq:numero)
+  variables
+    aux:numero
+  comenzar
+    aux:=0
+    aux:=(papelEsq-florEsq)
+    aux:=aux+1
+    mientras(aux>0)
+      si(HayFlorEnLaBolsa)
+        depositarFlor
+      aux:=aux+1
+      esquinaCumple:=esquinaCumple+1
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1 
+  variables
+    num:numero
+  comenzar
+    num:=2
+    flores:=4
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin   
+
+programa Cap7Ej6
+procesos
+  proceso ContarPapeles (ES papeles:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso ContarFlores (ES flores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+  fin
+  proceso ContarFloresYPapeles (ES flores:numero;ES papeles:numero)
+  comenzar
+    ContarPapeles(papeles)
+    ContarFlores(flores)
+  fin
+  proceso Cuadrado (E lado:numero;ES cond:boolean)	
+  variables
+    flores:numero
+    papeles:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    repetir 4
+      repetir lado
+        ContarFloresYPapeles(flores,papeles)
+        mover
+      derecha
+    si((flores=3)&(papeles=2))
+      cond:=V
+      Informar(cond)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    lado:numero
+    condicion:boolean
+  comenzar
+    lado:=99
+    condicion:=F
+    mientras(condicion=F)
+      Cuadrado(lado,condicion)
+      lado:= lado - 2
+      si(condicion=F)
+        Pos(PosAv + 1,PosCa + 1)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  
+    
+
+ 
+programa Cap7Ej6
+procesos
+  proceso ContarPapeles (ES papeles:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso ContarFlores (ES flores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+  fin
+  proceso ContarFloresYPapeles (ES flores:numero;ES papeles:numero)
+  comenzar
+    ContarPapeles(papeles)
+    ContarFlores(flores)
+  fin
+  proceso Cuadrado (E lado:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    repetir 4
+      repetir lado
+        ContarFloresYPapeles(flores,papeles)
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores,papeles,lado:numero
+    condicion:boolean
+  comenzar
+    lado:=99
+    condicion:=F
+    mientras(condicion=F)
+      flores:=0
+      papeles:=0
+      Cuadrado(lado,flores,papeles)
+      lado:= lado - 2
+      si((flores=3)&(papeles=2))
+        condicion:=V
+      sino
+        Pos(PosAv + 1,PosCa + 1)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  

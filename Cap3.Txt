@@ -1,0 +1,284 @@
+programa ContarFlores5
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroFlores : numero
+  comenzar
+    Pos(1,44)
+    nroFlores:=0
+    derecha
+    repetir 99
+      si(HayFlorEnLaEsquina)
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          nroFlores:= nroFlores + 1
+        repetir nroFlores
+          depositarFlor      
+      mover      
+    Informar(nroFlores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+------
+
+programa ContarFlores5
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroFlores : numero{contador}
+  comenzar
+    Pos(1,44)
+    nroFlores:=0
+    derecha
+    repetir 100
+      si((HayFlorEnLaEsquina)|(PosAv<100))
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          nroFlores:= nroFlores + 1
+        repetir nroFlores
+          depositarFlor      
+        mover      
+    Informar(nroFlores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+-----
+
+programa CallesTotalesver3
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    contador:numero
+  comenzar
+    Pos(1,1)
+    contador:= 0
+    repetir 100  
+      repetir 100
+        si~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+          contador:= contador+1
+        si(PosCa<100)
+          mover
+      si(PosAv<100)
+        Pos(PosAv+1,1)
+    Informar(contador)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa ContarFlores4Repetir
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroflores : numero
+  comenzar
+    Pos(1,7)
+    nroflores:=0
+    derecha
+    repetir 100
+      si(nroflores<>20)
+        si(HayFlorEnLaEsquina)
+          nroflores:= nroflores +1
+        mover
+    Informar(nroflores)
+  fin
+variables
+  R-info: robot1
+comenzar
+
+
+
+programa ContarFlores4Mientras
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroflores : numero
+  comenzar
+    Pos(1,7)
+    nroflores:=0
+    derecha
+    mientras(nroflores<20)
+      si(HayFlorEnLaEsquina)
+        nroflores:= nroflores +1
+      si(nroflores<20)
+        mover
+    Informar(nroflores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+programa ContarFlores5
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroPapeles : numero
+    contador:numero
+  comenzar
+    Pos(1,44)
+    nroPapeles:=0
+    contador:= 0
+    derecha
+    mientras(PosAv<100)
+      si(HayPapelEnLaEsquina)
+        mientras(HayPapelEnLaEsquina)
+          tomarPapel
+          nroPapeles:= nroPapeles + 1
+        repetir nroPapeles
+          depositarPapel
+          si(nroPapeles=6)
+            contador:= contador + 1        
+      mover      
+    Informar(nroflores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa ContarFlores5ver2
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    nroflores : numero
+  comenzar
+    Pos(1,7)
+    nroflores:=0
+    derecha
+    repetir 100
+      si((PosAv<100)&(nroflores<20))
+        si(HayFlorEnLaEsquina)
+          nroflores:= nroflores +1
+        mover
+    Informar(nroflores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+
+
+
+
+
+
+programa ejercicio10cap3
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    lado1:numero
+    lado2:numero
+    lado3:numero
+    lado4:numero
+    papeles:numero
+    numeroLado:numero
+  comenzar
+    numeroLado:= 0
+    repetir 4
+      repetir 99
+        si(HayPapelEnLaEsquina)
+          mientras(HayPapelEnLaEsquina)
+            tomarPapel
+            papeles:= papeles + 1         
+        mover
+      derecha
+      si(numeroLado=0)
+        lado1:=papeles
+      si(numeroLado=1)
+        lado2:=papeles
+      si(numeroLado=2)
+        lado3:=papeles
+      si(numeroLado=3)
+        lado4:=papeles
+      papeles:=0
+      numeroLado:=numeroLado+1            
+    Informar(lado1)
+    Informar(lado2)
+    Informar(lado3)
+    Informar(lado4)           
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+
+
+programa ejercicio1
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    papeles:numero
+  comenzar
+    repetir 4
+      repetir 99
+        si(HayPapelEnLaEsquina)
+          mientras(HayPapelEnLaEsquina)
+            tomarPapel
+            papeles:= papeles + 1
+        mover
+      Informar(papeles)
+      papeles:= 0  
+      derecha
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin                 
+
+
+
+
+

@@ -1,0 +1,135 @@
+programa ejercicio7cap4
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores:numero
+    papeles:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    repetir 4
+      repetir 99
+        si((HayFlorEnLaEsquina)&(HayPapelEnLaEsquina))
+          mientras(HayFlorEnLaEsquina)
+            tomarFlor
+            flores:=flores+1
+          mientras(HayPapelEnLaEsquina)
+            tomarPapel
+            papeles:=papeles+1
+          si((flores=3)&(papeles=3))
+            Informar(PosAv,PosCa)  
+          sino
+            repetir flores
+              depositarFlor
+            repetir papeles
+              depositarPapel
+        sino
+        	mover
+      derecha            
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa ejercicio7cap4
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores:numero
+    papeles:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    repetir 4
+      repetir 99
+        si((HayFlorEnLaEsquina)&(HayPapelEnLaEsquina))
+          mientras((HayFlorEnLaEsquina)&(HayPapelEnLaEsquina))
+            tomarFlor
+            tomarPapel
+            flores:=flores+1
+            papeles:=papeles+1            
+          si((flores=3)&(papeles=3))
+            Informar(PosAv,PosCa)  
+          sino
+            repetir flores
+              depositarFlor
+            repetir papeles
+              depositarPapel
+        sino
+        	mover
+      derecha            
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+
+
+programa ejercicio7cap4
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores:numero
+    papeles:numero
+    pasos:numero
+    esquina:boolean
+  comenzar
+    esquina:=F
+    pasos:=0
+    mientras (esquina = F)
+      papeles:=0
+      flores:=0
+      mientras (HayPapelEnLaEsquina)
+        tomarPapel
+        papeles:= papeles + 1
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+        flores:= flores + 1 
+      repetir flores
+        depositarFlor
+      repetir papeles
+        depositarPapel
+      si((papeles = 3) & (flores = 3))
+        esquina := V
+        Informar (PosAv)
+      si (pasos = 99) & (esquina = F)
+        derecha
+        pasos := 0
+      si (esquina = F)
+        mover
+        pasos:=pasos+1                  
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,577 @@
+programa practica1
+procesos
+  proceso ContarFyP(ES flores:numero;ES papeles:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel 
+      papeles:=papeles+1
+  fin
+  proceso RecorrerAv
+  variables
+    papeles,flores:numero
+    masFlores:boolean
+  comenzar
+    papeles:=0
+    flores:=0
+    mientras((HayPapelEnLaEsquina)|(HayFlorEnLaEsquina))
+      ContarFyP(flores,papeles)
+      mover
+    masFlores:= flores>=45   
+    si(masFlores)
+      Informar(masFlores)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    repetir 99
+      RecorrerAv
+      Pos(PosAv+1,1)
+    RecorrerAv  
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+========================================
+
+
+
+programa practica2
+procesos
+  proceso ContarFyP(ES floresAv:numero;ES papelesAv:numero)
+  variables
+    flores,papeles:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    mientras(HayFlorEnLaEsquina)
+      flores:=flores+1
+      tomarFlor
+    repetir flores
+      depositarFlor  
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel 
+      papeles:=papeles+1
+    repetir papeles
+      depositarPapel
+    floresAv:=floresAv+flores
+    papelesAv:=papelesAv+papeles
+  fin
+  proceso RecorrerAv(ES AvCnF:numero;ES AvCnP:numero)
+  variables
+    floresAv,papelesAv:numero 
+  comenzar
+    floresAv:=0
+    papelesAv:=0
+    repetir 99
+      ContarFyP(floresAv,papelesAv)
+      mover
+    ContarFyP(floresAv,papelesAv)
+    si(floresAv=20)
+      AvCnF:=AvCnF+1
+    si(papelesAv>60)
+      AvCnP:=AvCnP+1     
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    AvConFlores,AvConPapeles:numero
+  comenzar
+    AvConFlores:=0
+    AvConPapeles:=0
+    repetir 3
+      RecorrerAv(AvConFlores,AvConPapeles)
+      Pos(PosAv+1,1)
+    RecorrerAv(AvConFlores,AvConPapeles)
+    Informar(AvConFlores,AvConPapeles) 
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+          
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================
+
+programa practica8
+procesos
+  proceso RecorrerCaImp
+  variables
+    flores:numero
+  comenzar
+    flores:=0
+    mientras(flores<10)
+      si(HayFlorEnLaEsquina)
+        tomarFlor
+        flores:=flores+1
+      sino
+        mover
+  fin
+  proceso ContarPapeles(ES papeles:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso RecorrerAv(ES papeles:numero)
+  comenzar
+    repetir 99
+      ContarPapeles(papeles)
+      mover
+    ContarPapeles(papeles)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    papelesEsq:numero
+  comenzar
+    derecha
+    papelesEsq:=0
+    repetir 49
+      RecorrerCaImp
+      Pos(1,PosCa+2) 
+    RecorrerCaImp
+    repetir 3
+      derecha
+    Pos(10,1)
+    repetir 3 
+      RecorrerAv(papelesEsq)
+      Pos(PosAv+1,1)
+    RecorrerAv(papelesEsq)  
+    Informar(papelesEsq)      
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin      
+
+
+
+
+
+
+
+programa practica3
+procesos
+  proceso ContarFyP(ES flores:numero;ES papeles:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso Rect(ES base:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    repetir 2
+      mover
+      derecha
+      repetir base
+        ContarFyP(flores,papeles) 
+        mover
+      ContarFyP(flores,papeles)
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    flores,papeles,base:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    base:=16
+    repetir 8
+      Rect(base,flores,papeles)
+      base:= base - 2
+      Pos(1,PosCa+2)
+    Informar(flores,papeles) 
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin     
+
+
+
+
+
+programa practica4
+procesos
+  proceso ContarFyP(ES flores:numero;ES papeles:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso RecorrerAv(ES flores:numero;ES papeles:numero)
+  variables
+    floresAv:numero
+  comenzar
+    floresAv:=0
+    repetir 99
+      ContarFyP(floresAv,papeles)
+      mover
+    ContarFyP(floresAv,papeles)
+    flores:=floresAv
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    flores,papelestot:numero
+  comenzar
+    flores:=0
+    papelestot:=0
+    mientras(~(flores=25))
+      flores:=0
+      RecorrerAv(flores,papelestot)
+      Pos(PosAv+1,1)
+    Pos(1,75)
+    derecha
+    repetir papelestot
+      mover
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin      
+  
+    
+programa practica5
+procesos
+  proceso ContarFyP(ES floresCa:numero;ES papelesCa:numero;ES doble:numero)
+  variables
+    papeles,flores:numero
+  comenzar
+    papeles:=0
+    flores:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+    si~(flores + papeles = 0)
+      si(flores - papeles = papeles) 
+        doble:=doble + 1  
+    floresCa:=floresCa+flores
+    papelesCa:=papelesCa+papeles
+  fin
+  proceso RecorrerCa(ES flores:numero;ES papeles:numero;ES av:numero)
+  variables
+    doble:numero
+  comenzar
+    doble:=0
+    repetir av
+      ContarFyP(flores,papeles,doble)
+      mover
+    ContarFyP(flores,papeles,doble)
+    Informar(doble)
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    flores,papeles,av:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    av:=8
+    derecha
+    repetir 10
+      RecorrerCa(flores,papeles,av)
+      av:=av+2
+      Pos(1,PosCa+1)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin      
+  
+    
+ 
+programa practica7
+procesos
+  proceso ContarFyP(ES floresAv:numero;ES papelesAv:numero;ES cond:boolean)
+  variables
+    papelesEsq,floresEsq:numero
+  comenzar
+    papelesEsq:=0
+    floresEsq:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      floresEsq:=floresEsq+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papelesEsq:=papelesEsq+1
+    cond:=(( papelesEsq=0 )&( floresEsq=0 ))
+    Informar(cond)
+    floresAv:=floresAv+floresEsq
+    papelesAv:=papelesAv+papelesEsq
+  fin
+  proceso RecorrerAv(ES floresAv:numero;ES papelesAv:numero;)
+  variables
+    cond:boolean
+  comenzar
+    cond:= F
+    mientras(~(cond))
+      ContarFyP(floresAv,papelesAv,cond)
+      si(~(cond))
+        mover
+  fin
+  proceso Rect(E base:numero;E altura:numero)
+  comenzar
+    repetir 2
+      repetir base
+        mover
+      derecha
+      repetir altura
+        mover
+      derecha
+  fin    
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    flores,papeles:numero
+  comenzar
+    flores:=0
+    papeles:=0
+    Pos(8,1)
+    RecorrerAv(flores,papeles)
+    Pos(1,1)
+    Rect(flores,papeles)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin      
+  
+    programa Simulacro
+procesos  
+  proceso ContarFyP(ES flores:numero ; ES papeles:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+  fin
+  proceso RecorrerAv6(ES floresTot:numero;ES papelesTot:numero)
+  comenzar
+    Pos(6,1)
+    repetir 99
+      ContarFyP(floresTot,papelesTot)
+      mover
+    ContarFyP(floresTot,papelesTot)
+  fin
+  proceso RecorrerCa4 (E flores:numero)
+  comenzar
+    Pos(1,4)
+    repetir flores
+      mover
+  fin
+  proceso RecorrerCa8 (E papeles:numero)
+  variables
+    papelesEsq:numero
+  comenzar
+    Pos(1,8)
+    papelesEsq:=0
+    mientras((PosAv<=99)&(papelesEsq <> papeles))
+      papelesEsq:=0  
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        papelesEsq:=papelesEsq+1
+      si(papelesEsq <> papeles)
+        mover
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    floresTot,papelesTot:numero
+  comenzar
+    floresTot:=0
+    papelesTot:=0
+    RecorrerAv6(floresTot,papelesTot)
+    Informar(papelesTot)
+    derecha
+    RecorrerCa4(floresTot)
+    RecorrerCa8(papelesTot)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  
+programa parcial15
+procesos
+  proceso ContarFyP(ES flores:numero ; ES papeles:numero; ES cond:boolean)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:=flores+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles+1
+    si((flores<>0)&(papeles<>0))
+      cond:=(papeles = flores)
+  fin
+  proceso RecorrerCa20 (ES floresTot:numero;ES papelesTot:numero; ES pasos:numero)
+  variables
+    papelesEsq,floresEsq:numero
+    cond:boolean
+  comenzar
+    Pos(1,20)
+    papelesEsq:=0
+    floresEsq:=0
+    cond:=F
+    mientras(~(cond))
+      papelesEsq:=0
+      floresEsq:=0
+      ContarFyP(floresEsq,papelesEsq,cond)
+      si(~(cond))
+        mover
+        pasos:=pasos+1
+    floresTot:=floresTot+floresEsq
+    papelesTot:=papelesTot+papelesEsq
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    floresTot,papelesTot,pasos:numero
+  comenzar
+    floresTot:=0
+    papelesTot:=0
+    pasos:=0
+    derecha
+    RecorrerCa20(floresTot,papelesTot,pasos)
+    Informar(floresTot)
+    repetir 3
+      derecha
+    Pos(10,1)
+    repetir pasos
+      mover
+    derecha
+    Pos(1,30)
+    repetir floresTot + papelesTot
+      mover  
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa parcialito
+procesos
+  proceso ContarFyP (ES floresTot:numero;ES papeles3:numero;ES cond:boolean)
+  variables
+    floresEsq,papelesEsq:numero
+  comenzar
+    floresEsq:=0
+    papelesEsq:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      floresEsq:=floresEsq+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papelesEsq:=papelesEsq+1
+    si(papelesEsq=3)
+      papeles3:=papeles3 + 1
+    si((floresEsq=0)&(papelesEsq=0))
+      cond:=V
+    floresTot:=floresTot+floresEsq
+    Informar(floresTot)
+  fin  
+  proceso RecorrerCaImp(ES papeles3:numero)
+  variables
+    floresTot:numero
+    cond:boolean
+  comenzar
+    floresTot:=0
+    cond:=F
+    mientras((~cond))
+      ContarFyP(floresTot,papeles3,cond)
+      si(~(cond))
+        mover
+  fin    
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot  robot1
+  variables
+    condPapeles:numero
+  comenzar
+    condPapeles:=0
+    derecha
+    repetir 1
+      RecorrerCaImp(condPapeles)
+      Pos(1,PosCa+2)
+    RecorrerCaImp(condPapeles) 
+    Informar(condPapeles)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin      
+
+
+    

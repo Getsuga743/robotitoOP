@@ -1,0 +1,170 @@
+
+
+1
+a)
+Los algoritmos 1 y 4 parecen ser similares, la cuestion es que el algoritmo es poco conciso, mientras que el 4 utiliza una estructura de flujo de control repetitiva, la iteración.
+b)
+En el algoritmo nro. 2, el problema es que se esta utilzando una sentencia condicional,  esto hace que la condicion se verifique en un solo canal, el que se este viendo cuando el televisor se encienda; esta es la unica forma en la que se podria ver la pelicula. Se deberia
+utilizar una sentencia de iteracion, que verifique que en ese canal se este pasando la pelicula, y si es falso, que pase a otro canal.
+en el agloritmo nro. 3, se esta utilzando una de repetición, pero no se tiene la certeza de que la pelicula este en el canal donde termine la repetición, ni del numero de canales que hay.
+c) el algoritmo nro 4, caeria en lo que se conoce como "bucle infnito", porque la condicion de la iteracion, nunca seria falsa, seguiria cambiando de canal por siempre.
+
+
+
+2)
+
+Algoritmo 1:
+Caminar hasta la esquina.
+mientras (no pasen autos)
+    Cruzar la calle
+Comprar la revista “Crucigramas".
+
+
+El problema es que el Algoritmo no es conciso, no sabemos a que hace referencia la sentencia "Caminar hasta la esquina", ni "Cruzar la calle", no son sentencias muy atómicas, ni concisas.
+El otro problema es la estructura de control, si la condición del bucle es  verdadera, se ejecutaría la sentencia que tiene adentro, y esto sería así hasta que "no pasen autos".
+
+
+Algoritmo 2:
+mientras (no llegue a la esquina)
+    dar un paso
+mientras (pasen autos)
+    esperar 1 segundo
+Cruzar la calle.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+Este podria ser una solucion posible. las estructuras de iteración son válidas, la unica incidencia es que la linea "Cruzar la calle" no es muy concisa, ni muy atomica, no sabemos que realiza, ni si esta bien.
+
+
+Algoritmo 3:
+mientras (no llegue a la esquina)
+    dar un paso.
+mientras (pasen autos)
+    esperar 1 segundo
+mientras (no llegue a la otra vereda)
+    dar un paso.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+Esta podria ser otra solucion posible. la variacion es que utiliza otra estructura de iteración, es mucho mas concisa que el algoritmo 3. 
+
+
+Algoritmo 4:
+repetir 10
+    dar un paso.
+Cruzar la calle.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+No es una solución posible, el algoritmo esta mal planteado, lo correcto sería utilizar sentencias de interacion, no de repetición, porque no se conoce la distancia a la que esta la esquina
+,tampoco verifica una de las pre condiciones, la cual era revisar que no pasen autos.
+
+
+3)
+a)
+Algoritmo cambiar_papel_cafetera:
+inicio:
+    Abrir la cafetera.
+    Sacar el filtro viejo de la cafetera.
+    Colocar en nuevo filtro.
+    Cerrar la cafetera.
+fin
+b)
+Algoritmo cambiar_papel_cafetera:
+inicio
+    Abrir la cafetera.
+    si (filtro esta sucio)
+        Sacar el filtro viejo de la cafetera.
+        Colocar en nuevo filtro.
+    si_no
+        Volver a guardar el filtro nuevo.  
+    Cerrar la cafetera
+fin
+
+4)
+a)
+Algoritmo mover_cajas:
+inicio:
+    buscar traje
+    colocarse el traje
+    ir a la sala A
+    repetir 70
+        Agarrar una caja.
+        ir a sala B.
+        Dejar cajar.
+        Volver a sala A.
+    salir Sala A    
+    sacarse el traje.
+    guardar traje.
+fin
+5)
+Algoritmo mover_cajas:
+inicio:
+    buscar traje
+    colocarse el traje.
+    ir a la sala A.
+    repetir 35
+        Agarrar 2 cajas.
+        ir a sala B.
+        Dejar cajar.
+        Volver a sala A.
+    salir Sala A    
+    sacarse el traje.
+    guardar traje.
+fin
+6) 
+Algoritmo completar_album:
+inicio:
+    abrir album
+    repetir 150
+        repetir 10
+            colocar foto
+        dar vuelta pagina
+    cerrar album
+    agarrar el album
+    guardar album en la biblioteca
+fin
+
+7)
+
+Algoritmo completar_album:
+inicio:
+    abrir album
+    repetir 150
+        mientras (pagina no este llena)
+            colocar foto
+        dar vuelta pagina
+    cerrar album
+    agarrar el album
+    guardar album en la biblioteca
+fin
+
+8)
+
+Algoritmo completar_album:
+inicio:
+    abrir album
+    mientras (queden paginas)
+        repetir 10
+            colocar foto
+        dar vuelta pagina
+    cerrar album
+    agarrar el album
+    guardar album en la biblioteca
+fin
+
+9)
+Algoritmo completar_album:
+inicio:
+    abrir album
+    mientras (queden paginas)
+        mientras (pagina no este llena)
+            colocar foto
+        dar vuelta pagina
+    cerrar album
+    agarrar el album
+    guardar album en la biblioteca
+fin

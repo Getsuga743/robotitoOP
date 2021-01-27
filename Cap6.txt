@@ -1,0 +1,318 @@
+programa cuadrado
+procesos
+  proceso cuadrado (E ladoLong:numero)
+  comenzar
+    repetir 4
+      repetir ladoLong
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    cuadrado(4)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa Cap6Ej2A
+procesos
+  proceso cuadrado (E ladoLong:numero)
+  comenzar
+    repetir 4
+      repetir ladoLong
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    long:numero
+  comenzar
+    Pos(2,1)   
+    long:=1
+    repetir 4
+      cuadrado(long)
+      long:=long+1
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin	
+
+programa Cap6Ej2B
+procesos
+  proceso cuadrado (E ladoLong:numero)
+  comenzar
+    repetir 4
+      repetir ladoLong
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    long:numero
+  comenzar  
+    long:=1
+    repetir 5
+      cuadrado(long)
+      Pos(PosAv+long,1)
+      long:=long+1
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa Cap6Ej4A
+procesos
+  proceso Rect (E base:numero; E altura:numero)
+  comenzar
+    repetir 2
+      repetir altura
+        mover
+      derecha
+      repetir base
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    bas:numero
+  comenzar  
+    bas:=5
+    repetir 2
+      Rect (bas,1)      
+      Pos(PosAv+1,PosCa+2)
+      bas:= bas - 2
+    Rect (bas,1)       
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa Cap6Ej4B
+procesos
+  proceso Rect (E base:numero; E altura:numero)
+  comenzar
+    repetir 2
+      repetir altura
+        mover
+      derecha
+      repetir base
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    alt:numero
+  comenzar  
+    alt:=15
+    repetir 4
+      Rect (1,alt)      
+      Pos(PosAv+1,PosCa+2)
+      alt:= alt - 4 
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+programa Cap6Ej4B
+procesos
+  proceso Rect (E base:numero; E altura:numero)
+  comenzar
+    repetir 2
+      repetir altura
+        mover
+      derecha
+      repetir base
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    base:numero
+  comenzar  
+    base:=6
+    repetir 3
+      Rect (base  ,1)      
+      Pos(PosAv+1,PosCa+2)
+      base:=base - 2
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+
+
+
+
+
+
+
+programa cap6ej6b
+procesos
+  proceso recorrerAv(E nroAv:numero)
+  comenzar
+    Pos(nroAv,1)
+    repetir 99
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    av:numero
+  comenzar
+    av:=1
+    repetir 100
+      recorrerAv(av)
+      av:=av+1
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  
+  
+  
+programa cap6ej6d
+procesos
+  proceso recorrerAv(E nroAv:numero)
+  comenzar
+    Pos(nroAv,1)
+    repetir 99
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    av:numero
+  comenzar
+    av:=5
+    repetir 11
+      recorrerAv(av)
+      av:=av+1
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  programa cap6ej6c
+procesos
+  proceso recorrerAv(E nroAv:numero)
+  comenzar
+    Pos(nroAv,1)
+    repetir 99
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    av:numero
+  comenzar
+    av:=2
+    repetir 50
+      recorrerAv(av)  
+      av:=av+2
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa cap7ej7
+procesos
+  proceso calleFlor(E nroCalle:numero;E floresAJuntar:numero)
+  variables
+    floresEnLaBolsa:numero
+  comenzar
+    floresEnLaBolsa:=0
+    Pos(1,nroCalle)
+    derecha
+    mientras((floresEnLaBolsa)<=(floresAJuntar))
+      mientras((HayFlorEnLaEsquina)&(floresEnLaBolsa<=floresAJuntar))
+        tomarFlor
+        floresEnLaBolsa:=floresEnLaBolsa+1
+      si(floresEnLaBolsa<floresAJuntar)  
+        mover
+    Informar(floresEnLaBolsa)      
+  fin
+areas  
+      
+programa cap7ej8
+procesos
+  proceso darPasosEnAv(E nroAv:numero;E pasos:numero)
+  variables
+    nropasos:numero
+  comenzar
+    nropasos:=pasos
+    si(nropasos>99)
+      nropasos:=99
+    si(nropasos>0)
+      Pos(nroAv,1)
+      repetir nropasos
+        mover 
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    darPasosEnAv(2,-108)
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  
+      

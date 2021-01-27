@@ -1,0 +1,51 @@
+
+Algoritmo 1:
+Caminar hasta la esquina.
+mientras (no pasen autos)
+    Cruzar la calle
+Comprar la revista “Crucigramas".
+
+
+El problema es que el Algoritmo no es conciso, no sabemos a que hace referencia la sentencia "Caminar hasta la esquina", ni "Cruzar la calle", no son sentencias muy atómicas, ni concisas.
+El otro problema es la estructura de control, si la condición del bucle es  verdadera, se ejecutaría la sentencia que tiene adentro, y esto sería así hasta que "no pasen autos", suponiendo que "Cruzar la calle", resuelva el cruzar la calle, el programa podría cruzar la calle mas de una vez.
+
+
+Algoritmo 2:
+mientras (no llegue a la esquina)
+    dar un paso
+mientras (pasen autos)
+    esperar 1 segundo
+Cruzar la calle.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+Este podria ser una solucion posible. las estructuras de iteración son válidas, la unica incidencia es que la linea "Cruzar la calle" no es muy concisa, ni muy atomica, no sabemos que realiza, ni si esta bien.
+
+
+Algoritmo 3:
+mientras (no llegue a la esquina)
+    dar un paso.
+mientras (pasen autos)
+    esperar 1 segundo
+mientras (no llegue a la otra vereda)
+    dar un paso.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+Esta podria ser otra solucion posible. la variacion es que utiliza otra estructura de iteración, es mucho mas concisa que el algoritmo 3. 
+
+
+Algoritmo 4:
+repetir 10
+    dar un paso.
+Cruzar la calle.
+Llegar al puesto de revistas.
+Comprar la revista “Crucigramas".
+
+
+No es una solución posible, el algoritmo esta mal planteado, lo correcto sería utilizar sentencias de interacion, no de repetición, porque no se conoce la distancia a la que esta la esquina
+,tampoco verifica una de las pre condiciones, la cual era revisar que no pasen autos.
+
+

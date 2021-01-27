@@ -1,0 +1,59 @@
+
+programa Cap7Ej6
+procesos
+  proceso ContarPapeles (ES papelesEsq:numero)
+  variables
+    papeles:numero
+  comenzar
+    papeles:=0
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:=papeles + 1
+    repetir papeles
+      depositarPapel
+    papelesEsq:=papelesEsq+papeles
+  fin
+  proceso ContarFlores (ES floresEsq:numero)
+  variables
+    flores:numero
+  comenzar
+    flores:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    repetir flores
+      depositarFlor
+    floresEsq:=floresEsq+flores
+  fin
+  proceso Cuadrado (E lado:numero;ES flores:numero;ES papeles:numero)
+  comenzar
+    flores:=0
+    papeles:=0
+    repetir 4
+      repetir lado
+        ContarFlores(flores)
+        ContarPapeles(papeles)
+        mover
+      derecha
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    floresCua,papelesCua,lado:numero
+  comenzar
+    lado:=99
+    floresCua:=0
+    papelesCua:=0
+    mientras ~((floresCua=3)&(papelesCua=2))
+      Cuadrado(lado,floresCua,papelesCua)
+      lado:= lado - 1
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
